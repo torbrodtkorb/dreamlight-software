@@ -20,13 +20,13 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
-    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <eraseonlaunchrule>1</eraseonlaunchrule>
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data xmlns="">
@@ -107,6 +107,8 @@
     <ListValues>
       <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
       <Value>%24(PackRepoDir)\atmel\SAME70_DFP\2.4.166\same70b\include</Value>
+      <Value>../Generic</Value>
+      <Value>../Drivers</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -120,11 +122,12 @@
   </armgcc.linker.libraries.Libraries>
   <armgcc.linker.libraries.LibrarySearchPaths>
     <ListValues>
-      <Value>%24(ProjectDir)\Device_Startup</Value>
+      <Value>%24(ProjectDir)\Startup</Value>
     </ListValues>
   </armgcc.linker.libraries.LibrarySearchPaths>
   <armgcc.linker.optimization.GarbageCollectUnusedSections>True</armgcc.linker.optimization.GarbageCollectUnusedSections>
-  <armgcc.linker.miscellaneous.LinkerFlags>-Tsame70q21b_flash.ld</armgcc.linker.miscellaneous.LinkerFlags>
+  <armgcc.linker.memorysettings.ExternalRAM />
+  <armgcc.linker.miscellaneous.LinkerFlags>-Tlinker.ld</armgcc.linker.miscellaneous.LinkerFlags>
   <armgcc.assembler.general.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
@@ -143,10 +146,19 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Device_Startup\startup_same70q21b.c">
+    <Compile Include="Drivers\gpio.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Device_Startup\system_same70q21b.c">
+    <Compile Include="Drivers\gpio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Drivers\systick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Generic\types.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Startup\startup.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
@@ -154,13 +166,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Device_Startup\" />
+    <Folder Include="Generic" />
+    <Folder Include="Startup" />
+    <Folder Include="Drivers" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Device_Startup\same70q21b_flash.ld">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="Device_Startup\same70q21b_sram.ld">
+    <None Include="Startup\linker.ld">
       <SubType>compile</SubType>
     </None>
   </ItemGroup>
