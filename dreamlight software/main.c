@@ -3,6 +3,7 @@
 #include "sam.h"
 #include "gpio.h"
 #include "systick.h"
+#include "clock.h"
 
 volatile u32 tick = 0;
 
@@ -16,10 +17,14 @@ int main(void) {
 	gpio_set_direction(PIOC, 8, GPIO_OUTPUT);
 	gpio_clear(PIOC, 8);
 	
+	
+	clock_source_enable();
+	
+	
 	systick_set_rvr(12000);
 	systick_enable();
 	systick_interrupt_enable();
-	//Enables all intrrupt on the chip
+	/* Enables all intrrupt on the chip */
 	asm volatile("cpsie f" : : : "memory");
 	
     while (1) {
@@ -29,6 +34,6 @@ int main(void) {
 }
 
 void SysTick_Handler(void) {
-	//Is Called every time SysTick reloads
+	/* Is Called every time SysTick reloads */
 	tick++;
 }

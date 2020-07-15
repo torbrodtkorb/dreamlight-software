@@ -11,11 +11,11 @@ void gpio_set_function(Pio* port, u8 pin, enum gpio_function func) {
 	}
 	
 	if (func == FUNCTION_GPIO) {
-		// Enable GPIO
+		/* Enable GPIO */
 		port->PIO_PER = (1 << pin);
 	}
 	else {
-		// Disable GPIO which enables the peripheral control over the pin.  
+		/* Disable GPIO which enables the peripheral control over the pin. */  
 		port->PIO_PDR = (1 << pin);
 		
 		
@@ -25,7 +25,7 @@ void gpio_set_function(Pio* port, u8 pin, enum gpio_function func) {
 		else {
 			port->PIO_ABCDSR[0] &= ~(1 << pin);	
 		}
-		// This if/else statement is in both if and else statement over.
+		/* This if/else statement is in both if and else statement over. */
 		if (func & 0b10) {
 			port->PIO_ABCDSR[1] |= (1 << pin);
 		}
