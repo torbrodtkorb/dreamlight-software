@@ -24,7 +24,7 @@ int main(void) {
 	systick_set_rvr(12000);
 	systick_enable();
 	systick_interrupt_enable();
-	/* Enables all intrrupt on the chip */
+	/* Enables all interrupt on the chip */
 	asm volatile("cpsie f" : : : "memory");
 	
     while (1) {

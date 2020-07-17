@@ -11,23 +11,23 @@ enum clock_source {
 	CRYSTAL_OCILLATOR
 };
 	
-enum master_division {
+enum master_div {
 	NO_DIV,
 	DIV2,
 	DIV4,
 	DIV3
 };
 
-enum processor_prescaler {
-	NO_PRESCALER,
-	PRESCALER1,
-	PRESCALER2,
-	PRESCALER4,
-	PRESCALER8,
-	PRESCALER16,
-	PRESCALER32,
-	PRESCALER64,
-	PRESCALER3
+enum master_pres {
+	NO_PRES,
+	PRES_1,
+	PRES_2,
+	PRES_4,
+	PRES_8,
+	PRES_6,
+	PRES_32,
+	PRES_64,
+	PRES_3
 };
 
 enum clock_net {
