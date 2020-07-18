@@ -36,7 +36,7 @@ void plla_setup(u16 mult, u8 div, u8 wait) {
 	/* Bit 29 must always be set to ‘1’ when programming the CKGR_PLLAR */
 	u32 reg = (1 << 29);
 	/* Set value for multiplier, division and wait */
-	reg |= ((0x7FF & mult) << 16);
+	reg |= ((0x7FF & (mult - 1)) << 16);
 	reg |= ((0x3F & wait) << 8);
 	reg |= div;
 	PMC->CKGR_PLLAR = reg;

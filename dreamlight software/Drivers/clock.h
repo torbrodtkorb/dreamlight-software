@@ -43,6 +43,6 @@ void main_clock_select(enum clock_source source);
 
 void plla_setup(u16 mult, u8 div, u8 wait);
 
-void master_clock_config (enum clock_net net, enum processor_prescaler prescaler, enum master_division division);
+void master_clock_config (enum clock_net net, enum master_pres prescaler, enum master_div division);
 
 #endif

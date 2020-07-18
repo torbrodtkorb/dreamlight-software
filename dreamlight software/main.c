@@ -13,15 +13,24 @@ void delay_ms(u32 ms) {
 }
 
 int main(void) {
+	watchdog_disable();
+	flash_set_accsess_cycles(7);
+	clock_source_enable(CRYSTAL_OCILLATOR, 0xFF);
+	main_clock_select(CRYSTAL_OCILLATOR);
+	plla_setup(25, 1, 0xFF);
+	master_clock_config(PLLA_CLOCK, PRES_1, DIV2);
+	
+	
+	
+	
+	
+	
+	
 	gpio_set_function(PIOC, 8, FUNCTION_GPIO);
 	gpio_set_direction(PIOC, 8, GPIO_OUTPUT);
 	gpio_clear(PIOC, 8);
 	
-	
-	clock_source_enable();
-	
-	
-	systick_set_rvr(12000);
+	systick_set_rvr(300000);
 	systick_enable();
 	systick_interrupt_enable();
 	/* Enables all interrupt on the chip */
@@ -32,6 +41,13 @@ int main(void) {
 		gpio_toggle(PIOC, 8);
     }
 }
+
+
+
+
+
+
+
 
 void SysTick_Handler(void) {
 	/* Is Called every time SysTick reloads */

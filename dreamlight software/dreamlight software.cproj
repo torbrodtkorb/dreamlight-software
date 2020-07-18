@@ -40,6 +40,22 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.edbg</avrtool>
+    <avrtoolserialnumber>ATML2637010000000000</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0xA1020E01</avrdeviceexpectedsignature>
+    <avrtoolinterface>SWD</avrtoolinterface>
+    <com_atmel_avrdbg_tool_edbg>
+      <ToolOptions>
+        <InterfaceProperties>
+          <SwdClock>2000000</SwdClock>
+        </InterfaceProperties>
+        <InterfaceName>SWD</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.edbg</ToolType>
+      <ToolNumber>ATML2637010000000000</ToolNumber>
+      <ToolName>EDBG</ToolName>
+    </com_atmel_avrdbg_tool_edbg>
+    <avrtoolinterfaceclock>2000000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -152,13 +168,31 @@
     <Compile Include="Drivers\clock.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Drivers\flash.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Drivers\flash.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Drivers\gpio.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Drivers\gpio.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Drivers\spi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Drivers\spi.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Drivers\systick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Drivers\watchdog.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Drivers\watchdog.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Generic\types.h">
