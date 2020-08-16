@@ -6,6 +6,7 @@
 #include "clock.h"
 #include "watchdog.h"
 #include "flash.h"
+#include "usart.h"
 
 volatile u32 tick = 0;
 
