@@ -20,7 +20,6 @@ enum master_div {
 
 enum master_pres {
 	NO_PRES,
-	PRES_1,
 	PRES_2,
 	PRES_4,
 	PRES_8,

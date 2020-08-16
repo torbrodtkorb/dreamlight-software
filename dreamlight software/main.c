@@ -4,6 +4,8 @@
 #include "gpio.h"
 #include "systick.h"
 #include "clock.h"
+#include "watchdog.h"
+#include "flash.h"
 
 volatile u32 tick = 0;
 
@@ -14,11 +16,13 @@ void delay_ms(u32 ms) {
 
 int main(void) {
 	watchdog_disable();
+	
 	flash_set_accsess_cycles(7);
+	
 	clock_source_enable(CRYSTAL_OCILLATOR, 0xFF);
 	main_clock_select(CRYSTAL_OCILLATOR);
 	plla_setup(25, 1, 0xFF);
-	master_clock_config(PLLA_CLOCK, PRES_1, DIV2);
+	master_clock_config(PLLA_CLOCK, NO_PRES, DIV2);
 	
 	
 	
