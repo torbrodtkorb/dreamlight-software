@@ -7,6 +7,7 @@
 #include "watchdog.h"
 #include "flash.h"
 #include "usart.h"
+#include "print.h"
 
 volatile u32 tick = 0;
 
@@ -41,9 +42,16 @@ int main(void) {
 	/* Enables all interrupt on the chip */
 	asm volatile("cpsie f" : : : "memory");
 	
+	
+	print_init();
+	
+	
+	
+	
     while (1) {
 		delay_ms(500);
 		gpio_toggle(PIOC, 8);
+		printl("stram");
     }
 }
 

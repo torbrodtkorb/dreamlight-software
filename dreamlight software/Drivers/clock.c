@@ -1,4 +1,3 @@
-/// Copyright (C) Tor Brodtkorb
 
 #include "clock.h"
 
@@ -68,4 +67,18 @@ void master_clock_config (enum clock_net net, enum master_pres pres, enum master
 	reg |= (net << 0);
 	PMC->PMC_MCKR = reg;
 	while (!(PMC->PMC_SR & (1 << 3)));
+}
+
+/* Enables peripheral clock with clock source MCK */
+void enable_peripheral_clock(u8 pid){
+	if (pid < 32){
+		PMC->PMC_PCER0 = (1 << pid);
+	}
+	else if (pid < 63){
+		PMC->PMC_PCER1 = (1 << (pid - 32));
+	}
+	else{
+		/* Enables peripheral clock with clock source MCK */
+		PMC->PMC_PCR = (pid & 0b1111111) | (1 << 12) | (1 << 28) | (4 << 8);
+	}
 }
