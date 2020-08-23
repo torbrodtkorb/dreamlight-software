@@ -47,7 +47,7 @@ int main(void)
 	led_strip_init();
 	
 	while (1) {
-		spi_transmit_8_bit(SPI0, 0b11001010);
+		spi_transmit_8_bit(SPI0, 0b11100010);
 	}
 	
     while (1) {

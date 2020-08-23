@@ -33,7 +33,7 @@ void spi_init(Spi* hw, struct spi_desc* desc)
 			(desc->clock_phase << 1) |
 			(desc->clock_polarity << 0);
 			
-	hw->SPI_CSR[desc->cs];
+	hw->SPI_CSR[desc->cs] = reg;
 	
 	/* Enable spi */
 	hw->SPI_CR = (1 << 0);
