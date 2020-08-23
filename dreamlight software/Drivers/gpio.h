@@ -1,4 +1,4 @@
-/// Copyright (C) Tor Brodtkorb
+/* Copyright (C) Tor Brodtkorb */
 
 #ifndef GPIO_H
 #define GPIO_H
@@ -28,6 +28,5 @@ void gpio_set(Pio* port, u8 pin);
 void gpio_clear(Pio* port, u8 pin);
 
 void gpio_toggle(Pio* port, u8 pin);
-
 
 #endif

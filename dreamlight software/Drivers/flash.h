@@ -1,4 +1,4 @@
-/// Copyright (C) Tor Brodtkorb
+/* Copyright (C) Tor Brodtkorb */
 
 #ifndef FLASH_H
 #define FLASH_H

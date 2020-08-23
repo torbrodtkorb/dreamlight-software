@@ -1,10 +1,11 @@
-/// Copyright (C) Tor Brodtkorb
+/* Copyright (C) Tor Brodtkorb */
 
 #include "flash.h"
 #include "types.h"
 #include "sam.h"
 
-void flash_set_accsess_cycles(u8 cycles) {
+void flash_set_accsess_cycles(u8 cycles)
+{
 	
 	u32 reg = EFC->EEFC_FMR;
 	reg &= ~(0b1111 << 8);

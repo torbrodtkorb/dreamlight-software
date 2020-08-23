@@ -1,10 +1,11 @@
-/// Copyright (C) Tor Brodtkorb
+/* Copyright (C) Tor Brodtkorb */
 
 #include "print.h"
 #include "usart.h"
 #include "gpio.h"
 
-void print_init(void){
+void print_init(void)
+{
 	enable_peripheral_clock(14);
 	
 	struct usart_desc print_desc = {
@@ -20,14 +21,16 @@ void print_init(void){
 	gpio_set_function(PIOB, 4, FUNCTION_D);
 }
 
-void print(const char* data){
+void print(const char* data)
+{
 	while (*data){
 		usart_transmit(USART1, *data);
 		data++;
 	}
 }
 
-void printl(const char* data){
+void printl(const char* data)
+{
 	while (*data){
 		usart_transmit(USART1, *data);
 		data++;

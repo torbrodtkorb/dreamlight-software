@@ -1,4 +1,4 @@
-/// Copyright (C) Tor Brodtkorb
+/* Copyright (C) Tor Brodtkorb */
 
 #ifndef WATCHDOG_H
 #define WATCHDOG_H

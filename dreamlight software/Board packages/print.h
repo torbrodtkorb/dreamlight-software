@@ -1,4 +1,4 @@
-/// Copyright (C) Tor Brodtkorb
+/* Copyright (C) Tor Brodtkorb */
 
 #ifndef PRINT_H
 #define PRINT_H

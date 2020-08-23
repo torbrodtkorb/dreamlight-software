@@ -1,4 +1,4 @@
-/// Copyright (C) Tor Brodtkorb
+/* Copyright (C) Tor Brodtkorb */
 
 #include "sam.h"
 #include "gpio.h"
@@ -11,12 +11,14 @@
 
 volatile u32 tick = 0;
 
-void delay_ms(u32 ms) {
+void delay_ms(u32 ms)
+{
 	tick = 0;
 	while (tick < ms);
 }
 
-int main(void) {
+int main(void)
+{
 	watchdog_disable();
 	
 	flash_set_accsess_cycles(7);
@@ -25,11 +27,6 @@ int main(void) {
 	main_clock_select(CRYSTAL_OCILLATOR);
 	plla_setup(25, 1, 0xFF);
 	master_clock_config(PLLA_CLOCK, NO_PRES, DIV2);
-	
-	
-	
-	
-	
 	
 	
 	gpio_set_function(PIOC, 8, FUNCTION_GPIO);
@@ -62,7 +59,8 @@ int main(void) {
 
 
 
-void SysTick_Handler(void) {
+void SysTick_Handler(void)
+{
 	/* Is Called every time SysTick reloads */
 	tick++;
 }

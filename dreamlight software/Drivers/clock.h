@@ -1,4 +1,4 @@
-/// Copyright (C) Tor Brodtkorb
+/* Copyright (C) Tor Brodtkorb */
 
 #ifndef CLOCK_H
 #define CLOCK_H
@@ -45,4 +45,5 @@ void plla_setup(u16 mult, u8 div, u8 wait);
 void master_clock_config (enum clock_net net, enum master_pres prescaler, enum master_div division);
 
 void enable_peripheral_clock(u8 pid);
+
 #endif

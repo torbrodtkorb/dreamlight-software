@@ -1,4 +1,4 @@
-/// Copyright (C) Tor Brodtkorb
+/* Copyright (C) Tor Brodtkorb */
 
 #ifndef USART_H
 #define USART_H
@@ -33,7 +33,8 @@ struct usart_desc {
 
 void usart_init(Usart* usart, struct usart_desc* desc);
 
-static inline void usart_transmit(Usart* usart, u8 data){
+static inline void usart_transmit(Usart* usart, u8 data)
+{
 	/* Wait to the US_THR is empty */
 	while (!(usart->US_CSR & (1 << 1)));
 	

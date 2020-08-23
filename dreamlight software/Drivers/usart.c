@@ -1,8 +1,9 @@
-/// Copyright (C) Tor Brodtkorb
+/* Copyright (C) Tor Brodtkorb */
 
 #include "usart.h"
 
-void usart_init(Usart* usart, struct usart_desc* desc){
+void usart_init(Usart* usart, struct usart_desc* desc)
+{
 	/* Disable and reset transmitter and receiver */
 	usart->US_CR = (1 << 5) | (1 << 7) | (1 << 2) | (1 << 3);
 	
@@ -20,5 +21,3 @@ void usart_init(Usart* usart, struct usart_desc* desc){
 	/* Enable transmitter and receiver */
 	usart->US_CR = (1 << 4) | (1 << 6);
 }
-
-
