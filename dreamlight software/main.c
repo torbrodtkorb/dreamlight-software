@@ -8,6 +8,8 @@
 #include "flash.h"
 #include "usart.h"
 #include "print.h"
+#include "spi.h"
+#include "led_strip.h"
 
 volatile u32 tick = 0;
 
@@ -42,13 +44,17 @@ int main(void)
 	
 	print_init();
 	
+	led_strip_init();
 	
-	
+	while (1) {
+		spi_transmit_8_bit(SPI0, 0b11001010);
+	}
 	
     while (1) {
 		delay_ms(500);
 		gpio_toggle(PIOC, 8);
 		printl("stram");
+		
     }
 }
 

@@ -123,9 +123,9 @@
     <ListValues>
       <Value>%24(PackRepoDir)\arm\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
       <Value>%24(PackRepoDir)\atmel\SAME70_DFP\2.4.166\same70b\include</Value>
-      <Value>../Generic</Value>
-      <Value>../Drivers</Value>
-      <Value>../Board packages</Value>
+      <Value>../drivers</Value>
+      <Value>../generic</Value>
+      <Value>../board packages</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -163,52 +163,58 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Board packages\print.c">
+    <Compile Include="board packages\led_strip.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Board packages\print.h">
+    <Compile Include="board packages\led_strip.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\clock.c">
+    <Compile Include="board packages\print.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\clock.h">
+    <Compile Include="board packages\print.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\flash.c">
+    <Compile Include="drivers\clock.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\flash.h">
+    <Compile Include="drivers\clock.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\gpio.c">
+    <Compile Include="drivers\flash.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\gpio.h">
+    <Compile Include="drivers\flash.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\spi.c">
+    <Compile Include="drivers\gpio.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\spi.h">
+    <Compile Include="drivers\gpio.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\systick.h">
+    <Compile Include="drivers\spi.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\usart.c">
+    <Compile Include="drivers\spi.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\usart.h">
+    <Compile Include="drivers\systick.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\watchdog.c">
+    <Compile Include="drivers\usart.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Drivers\watchdog.h">
+    <Compile Include="drivers\usart.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Generic\types.h">
+    <Compile Include="drivers\watchdog.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\watchdog.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="generic\types.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Startup\startup.c">
@@ -219,10 +225,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Generic" />
-    <Folder Include="Board packages" />
+    <Folder Include="generic" />
+    <Folder Include="board packages" />
     <Folder Include="Startup" />
-    <Folder Include="Drivers" />
+    <Folder Include="drivers" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Startup\linker.ld">

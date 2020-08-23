@@ -3,10 +3,14 @@
 #include "print.h"
 #include "usart.h"
 #include "gpio.h"
+#include "clock.h"
 
 void print_init(void)
 {
 	enable_peripheral_clock(14);
+	
+	gpio_set_function(PIOA, 21, FUNCTION_A);
+	gpio_set_function(PIOB, 4, FUNCTION_D);
 	
 	struct usart_desc print_desc = {
 		.baudrate = 115200,
@@ -16,9 +20,6 @@ void print_init(void)
 	};
 	
 	usart_init(USART1, &print_desc);
-	
-	gpio_set_function(PIOA, 21, FUNCTION_A);
-	gpio_set_function(PIOB, 4, FUNCTION_D);
 }
 
 void print(const char* data)
