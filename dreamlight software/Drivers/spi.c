@@ -8,9 +8,7 @@ void spi_init(Spi* hw, struct spi_desc* desc)
 	hw->SPI_CR = (1 << 1);
 	
 	u8 cs_fiels = 0b1111;
-	if (desc->use_cs) {
-		cs_fiels &= ~(1 << desc->cs);
-	}
+	cs_fiels &= ~(1 << desc->cs);
 	
 	/*
 	 * Disabled local loopback path

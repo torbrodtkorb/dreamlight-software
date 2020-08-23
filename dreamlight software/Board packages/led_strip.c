@@ -19,7 +19,7 @@ void led_strip_init(void)
 	
 	struct spi_desc desc = {
 		.delay_between_chip_select = 10,
-		.use_cs = 0,
+		.cs = 1,
 		.master_mode_enable = 1,
 		.delay_between_consecutive_transfers = 10,
 		.delay_between_falling_edge = 10,

@@ -30,7 +30,6 @@ enum spi_clock_polarity {
 
 struct spi_desc {
 	u8 delay_between_chip_select;
-	u8 use_cs : 1;
 	u8 cs     : 2;
 	u8 master_mode_enable : 1;
 	
