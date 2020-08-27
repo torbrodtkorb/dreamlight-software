@@ -46,9 +46,25 @@ int main(void)
 	
 	led_strip_init();
 	
-	while (1) {
-		spi_transmit_8_bit(SPI0, 0b11100010);
+	/*
+	spi_transmit_8_bit(SPI0, 0b00000000);
+	spi_transmit_8_bit(SPI0, 0b00000000);
+	spi_transmit_8_bit(SPI0, 0b00000000);
+	spi_transmit_8_bit(SPI0, 0b00000000);
+	
+	for (int i = 0; i < 76; i++) {
+		spi_transmit_8_bit(SPI0, 0b11100001);
+		spi_transmit_8_bit(SPI0, 0b00000000);
+		spi_transmit_8_bit(SPI0, 0b00000000);
+		spi_transmit_8_bit(SPI0, 0b00000111);
 	}
+		spi_transmit_8_bit(SPI0, 0b11111111);
+		spi_transmit_8_bit(SPI0, 0b11111111);
+		spi_transmit_8_bit(SPI0, 0b11111111);
+		spi_transmit_8_bit(SPI0, 0b11111111);
+	
+		*/
+	led_strip_on_to(105,1,0,200,0);
 	
     while (1) {
 		delay_ms(500);

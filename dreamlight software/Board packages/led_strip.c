@@ -5,6 +5,9 @@
 #include "gpio.h"
 #include "spi.h"
 
+struct pixel pixels[NUMBER_OF_LEDS] = {0};
+int i = 0;
+
 void led_strip_init(void)
 {
 	
@@ -31,4 +34,69 @@ void led_strip_init(void)
 	
 	spi_init(SPI0, &desc);
 	
+}
+/*
+void led_on (u8 global, u8 red, u8 green,u8 blue){
+	color[5] = (pixel){global, red, green, blue};
+	spi_transmit_8_bit()
+		
+}
+*/
+
+void led_strip_on (u8 global, u8 red, u8 green,u8 blue){
+	
+	spi_transmit_8_bit(SPI0, 0x00);
+	spi_transmit_8_bit(SPI0, 0x00);
+	spi_transmit_8_bit(SPI0, 0x00);
+	spi_transmit_8_bit(SPI0, 0x00);
+			
+	for (int i = 0; i < NUMBER_OF_LEDS; i ++){
+		//color[i] = (struct pixel){global, red, green, blue};
+		
+		pixels[i].blue = blue;
+		pixels[i].red = red;
+		pixels[i].green = green;
+		pixels[i].global = global;
+			
+		spi_transmit_8_bit(SPI0, pixels[i].global | (0b111 << 5));
+		spi_transmit_8_bit(SPI0, pixels[i].red);
+		spi_transmit_8_bit(SPI0, pixels[i].green);
+		spi_transmit_8_bit(SPI0, pixels[i].blue);
+	}
+
+	spi_transmit_8_bit(SPI0, 0xFF);
+	spi_transmit_8_bit(SPI0, 0xFF);
+	spi_transmit_8_bit(SPI0, 0xFF);
+	spi_transmit_8_bit(SPI0, 0xFF);
+}
+
+void led_strip_on_to (u8 pixel, u8 global, u8 red, u8 green,u8 blue){
+	
+	spi_transmit_8_bit(SPI0, 0x00);
+	spi_transmit_8_bit(SPI0, 0x00);
+	spi_transmit_8_bit(SPI0, 0x00);
+	spi_transmit_8_bit(SPI0, 0x00);	
+	
+		for (int i = 0; i < NUMBER_OF_LEDS; i ++){
+			pixels[i].blue = 0;
+			pixels[i].red = 0;
+			pixels[i].green = 0;
+			pixels[i].global = 0;
+		}
+		pixels[pixel-1] = (struct pixel){global, red, green, blue};
+
+	
+	
+	for (int i = 0; i < NUMBER_OF_LEDS; i ++){
+		
+		spi_transmit_8_bit(SPI0, pixels[i].global | (0b111 << 5));
+		spi_transmit_8_bit(SPI0, pixels[i].red);
+		spi_transmit_8_bit(SPI0, pixels[i].green);
+		spi_transmit_8_bit(SPI0, pixels[i].blue);
+	}
+
+	spi_transmit_8_bit(SPI0, 0xFF);
+	spi_transmit_8_bit(SPI0, 0xFF);
+	spi_transmit_8_bit(SPI0, 0xFF);
+	spi_transmit_8_bit(SPI0, 0xFF);
 }
