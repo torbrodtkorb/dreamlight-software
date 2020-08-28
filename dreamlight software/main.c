@@ -64,7 +64,8 @@ int main(void)
 		spi_transmit_8_bit(SPI0, 0b11111111);
 	
 		*/
-	led_strip_on_to(105,1,0,200,0);
+	led_strip_on_to(105,1,100,0,0);
+	//led_strip_on(1,200,0,0);
 	
     while (1) {
 		delay_ms(500);

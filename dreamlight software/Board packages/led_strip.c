@@ -49,8 +49,15 @@ void led_strip_on (u8 global, u8 red, u8 green,u8 blue){
 	spi_transmit_8_bit(SPI0, 0x00);
 	spi_transmit_8_bit(SPI0, 0x00);
 	spi_transmit_8_bit(SPI0, 0x00);
-			
+	
 	for (int i = 0; i < NUMBER_OF_LEDS; i ++){
+		pixels[i].blue = 0;
+		pixels[i].red = 0;
+		pixels[i].green = 0;
+		pixels[i].global = 0;
+	}
+				
+	for (int i = 0; i < 104; i ++){
 		//color[i] = (struct pixel){global, red, green, blue};
 		
 		pixels[i].blue = blue;
