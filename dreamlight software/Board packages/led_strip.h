@@ -22,6 +22,9 @@ void led_strip_on (u8 global, u8 red, u8 green,u8 blue);
 
 void led_strip_on_to (u8 pixel, u8 global, u8 red, u8 green,u8 blue);
 
+void update_led_strip(struct pixel data[], u8 lenght);
+
+
 
 
 #endif
