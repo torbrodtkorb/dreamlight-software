@@ -163,16 +163,25 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="board packages\led_strip.c">
+    <Compile Include="board packages\led_driver.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="board packages\led_strip.h">
+    <Compile Include="board packages\led_driver.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board packages\print.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="board packages\print.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\sleep.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\sleep.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="startup.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="drivers\clock.c">
@@ -215,6 +224,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="generic\types.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="startup.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Startup\startup.c">
