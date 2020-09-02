@@ -163,6 +163,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="application\led_strip.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="application\led_strip.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="board packages\led_driver.c">
       <SubType>compile</SubType>
     </Compile>
@@ -239,6 +245,7 @@
   <ItemGroup>
     <Folder Include="generic" />
     <Folder Include="board packages" />
+    <Folder Include="application" />
     <Folder Include="Startup" />
     <Folder Include="drivers" />
   </ItemGroup>

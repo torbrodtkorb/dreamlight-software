@@ -19,11 +19,11 @@ void led_strip_init(void)
 		.delay_between_chip_select = 10,
 		.cs = 1,
 		.master_mode_enable = 1,
-		.delay_between_consecutive_transfers = 10,
+		.delay_between_consecutive_transfers = 1,
 		.delay_between_falling_edge = 10,
 		.pck_div = 200,
 		.bit_per_transfer = SPI_8_BIT,
-		.clock_phase = SPI_CLOCK_CAPTURE_ON_TRAILING,
+		.clock_phase = SPI_CLOCK_CAPTURE_ON_LEADING,
 		.clock_polarity = SPI_CLOCK_INACTIVE_LOW,
 	};
 	
