@@ -3,10 +3,10 @@
 #ifndef PRINT_H
 #define PRINT_H
 
+#include <stdarg.h>
+
 void print_init(void);
 
-void print(const char* data);
-
-void printl(const char* data);
+void print(const char* data, ...);
 
 #endif
