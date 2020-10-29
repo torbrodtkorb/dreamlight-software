@@ -18,7 +18,7 @@ struct led {
 	u8 b;
 };
 
-struct led led_strip[4];
+struct led led_strip[2];
 	
 void ws2812b_draw(struct led* addr, u32 leds, Pio* port, u32 pin);
 
@@ -27,11 +27,10 @@ int main(void)
 	startup();
 	gpio_set_function(PIOD,22, FUNCTION_GPIO);
 	gpio_set_direction(PIOD,22, GPIO_OUTPUT);
-	ws2812b_draw(led_strip, 4, PIOD, 22);
+	led_strip[0] = (struct led) {0b01010000, 0b00101111, 0b11111111};
+	led_strip[1] = (struct led) {0b01010000, 0b00101111, 0b11111111};
     while (1) {
-
-		gpio_toggle(PIOD, 22);
-		sleep(500);
+		ws2812b_draw(led_strip, 1, PIOD, 22);
     }
 }
 
