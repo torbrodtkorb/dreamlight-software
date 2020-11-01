@@ -25,7 +25,7 @@ void print_init(void)
 
 static char print_buffer[256];
 
-void print(const char* data, ...)
+void _print(const char* data, ...)
 {
 	va_list args;
 	va_start(args, data);
@@ -36,5 +36,13 @@ void print(const char* data, ...)
 	while (size--) {
 		usart_transmit(USART1, (u8)*src);
 		src++;
+	}
+}
+
+
+void print(const char* data)
+{
+	while (*data) {
+		usart_transmit(USART1, *(u8 *)data++);
 	}
 }

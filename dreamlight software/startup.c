@@ -13,6 +13,7 @@
 #include "spi.h"
 #include "led_driver.h"
 #include "sleep.h"
+#include "engine.h"
 
 void startup(void)
 {

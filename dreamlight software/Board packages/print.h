@@ -7,6 +7,8 @@
 
 void print_init(void);
 
-void print(const char* data, ...);
+void _print(const char* data, ...);
+
+void print(const char* data);
 
 #endif

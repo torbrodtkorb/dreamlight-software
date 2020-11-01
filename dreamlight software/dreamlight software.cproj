@@ -126,6 +126,7 @@
       <Value>../drivers</Value>
       <Value>../board packages</Value>
       <Value>../lib</Value>
+      <Value>../Graphics</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -185,6 +186,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="drivers\sleep.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Graphics\engine.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Graphics\engine.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\sprint.c">
@@ -255,6 +262,7 @@
     <Folder Include="lib" />
     <Folder Include="board packages" />
     <Folder Include="application" />
+    <Folder Include="Graphics" />
     <Folder Include="Startup" />
     <Folder Include="drivers" />
   </ItemGroup>
