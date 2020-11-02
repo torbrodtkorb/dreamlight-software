@@ -28,22 +28,21 @@ void led_strip_init(void)
 	};
 	
 	spi_init(SPI0, &desc);
-	
 }
 
-void update_led_strip(const struct pixel* data, u32 lenght)
+void led_strip_update(const struct pixel* pixels, u32 cnt)
 {
 	for (u8 i = 0; i < 4; i++) {
 		spi_transmit_8_bit(SPI0, 0x00);
 	}
 
-	for (u32 i = 0; i < lenght; i++) {
-		spi_transmit_8_bit(SPI0, data->global | (0b111 << 5));
-		spi_transmit_8_bit(SPI0, data->blue);
-		spi_transmit_8_bit(SPI0, data->green);
-		spi_transmit_8_bit(SPI0, data->red);
+	for (u32 i = 0; i < cnt; i++) {
+		spi_transmit_8_bit(SPI0, pixels->global | (0b111 << 5));
+		spi_transmit_8_bit(SPI0, pixels->blue);
+		spi_transmit_8_bit(SPI0, pixels->green);
+		spi_transmit_8_bit(SPI0, pixels->red);
 		
-		data++;
+		pixels++;
 	}
 
 	for (u8 i = 0; i < 4; i++) {

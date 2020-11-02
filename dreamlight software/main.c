@@ -1,37 +1,82 @@
 /* Copyright (C) Tor Brodtkorb */
 
 #include "sam.h"
-#include "startup.h"
-#include "types.h"
-#include "led_driver.h"
+#include "watchdog.h"
+#include "flash.h"
+#include "clock.h"
 #include "gpio.h"
 #include "sleep.h"
 #include "print.h"
+#include "gmalloc.h"
+#include "led_driver.h"
 #include "engine.h"
 
+#define LED_CNT 50
 
-struct led {
-	u8 r; 
-	u8 g; 
-	u8 b;
-};
-
-struct led led_strip[13];
+/// Early initialization for the CPU
+void early_init(void) 
+{
+	watchdog_disable();
 	
-void ws2812b_draw(struct led* addr, u32 leds, Pio* port, u32 pin);
+	// Set flash wait states according to the CPU frequency
+	flash_set_accsess_cycles(7);
+	
+	// Set system clock
+	clock_source_enable(CRYSTAL_OCILLATOR, 0xFF);
+	main_clock_select(CRYSTAL_OCILLATOR);
+	plla_setup(25, 1, 0xFF);
+	master_clock_config(PLLA_CLOCK, NO_PRES, DIV2);
+	
+	// Initialize the malloc
+	gmalloc_init();
+}
+
+/// Initializes the drivers
+void driver_init(void) 
+{
+	// Enable button
+	gpio_set_function(PIOC, 8, FUNCTION_GPIO);
+	gpio_set_direction(PIOC, 8, GPIO_OUTPUT);
+	gpio_clear(PIOC, 8);
+	
+	// Enable delay
+	sleep_init();
+	
+	// Enable console print
+	print_init();
+	
+	// Enable the led strip
+	led_strip_init();
+}
+
+struct pixel led_strip[LED_CNT];
+
+struct graphics_engine e;
 
 
-struct graphics_engine graphics_engine;
-
+/// Main entry point
 int main(void)
 {
-	startup();
+	early_init();
+	driver_init();
 	
-	engine_init(&graphics_engine);
-	
+	// =====================================
+	// Test code for the graphics engine
+	// =====================================
+	engine_init(&e);
+	e.update(&e);
 	while (1) {
+		
+		for (int i = 0; i  < LED_CNT; i++){
+			led_strip[i].global = 15;
+			led_strip[i].blue = 255;
+			led_strip[i].red = 30;
+			led_strip[i].green = 0;
+		}
+		
+		led_strip_update(led_strip, LED_CNT);
+		
 	
-
 	}
 }
 

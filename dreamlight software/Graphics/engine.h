@@ -5,14 +5,17 @@
 
 #include "print.h"
 #include "types.h"
+#include "led_driver.h"
 
 struct graphics_engine {
-	void (*print)(const char*);
+	struct pixel* pixels;
+	u32 pixel_cnt;
 	
-	u32* tmp;
+	void (*update)(struct graphics_engine*); 
 };
 
 
 void engine_init(struct graphics_engine* e);
 
 #endif
+

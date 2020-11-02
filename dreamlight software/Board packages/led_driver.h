@@ -15,6 +15,6 @@ struct pixel {
 
 void led_strip_init(void);
 
-void update_led_strip(const struct pixel* data, u32 lenght);
+void led_strip_update(const struct pixel* pixels, u32 cnt);
 
 #endif

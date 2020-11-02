@@ -126,7 +126,7 @@
       <Value>../drivers</Value>
       <Value>../board packages</Value>
       <Value>../lib</Value>
-      <Value>../Graphics</Value>
+      <Value>../graphics</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -164,12 +164,6 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="application\led_strip.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="application\led_strip.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="board packages\led_driver.c">
       <SubType>compile</SubType>
     </Compile>
@@ -188,19 +182,22 @@
     <Compile Include="drivers\sleep.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Graphics\engine.c">
+    <Compile Include="graphics\engine.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Graphics\engine.h">
+    <Compile Include="graphics\engine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\gmalloc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\gmalloc.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\sprint.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\sprint.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="startup.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="drivers\clock.c">
@@ -245,9 +242,6 @@
     <Compile Include="lib\types.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="startup.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Startup\startup.c">
       <SubType>compile</SubType>
     </Compile>
@@ -261,8 +255,7 @@
   <ItemGroup>
     <Folder Include="lib" />
     <Folder Include="board packages" />
-    <Folder Include="application" />
-    <Folder Include="Graphics" />
+    <Folder Include="graphics" />
     <Folder Include="Startup" />
     <Folder Include="drivers" />
   </ItemGroup>
