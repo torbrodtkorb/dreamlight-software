@@ -194,6 +194,9 @@
     <Compile Include="lib\gmalloc.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lib\list.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lib\sprint.c">
       <SubType>compile</SubType>
     </Compile>

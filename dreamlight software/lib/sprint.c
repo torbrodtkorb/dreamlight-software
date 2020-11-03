@@ -1,3 +1,5 @@
+/* Copyright (C) Tor Brodtkorb */
+
 #include "sprint.h"
 
 #define FMT_EX   0x01
