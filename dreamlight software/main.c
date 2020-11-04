@@ -10,6 +10,7 @@
 #include "gmalloc.h"
 #include "led_driver.h"
 #include "engine.h"
+#include "list.h"
 
 #define LED_CNT 50
 
@@ -53,12 +54,39 @@ struct pixel led_strip[LED_CNT];
 
 struct graphics_engine e;
 
+struct name {
+	char* name;
+	
+	struct list_node node;
+};
 
 /// Main entry point
 int main(void)
 {
 	early_init();
 	driver_init();
+	print("hei");
+	
+	struct list_node list;
+	list_init(&list);
+	
+	struct name name1 = { .name = "tor" };
+	struct name name2 = { .name = "elsker" };
+	struct name name3 = { .name = "mange" };
+	struct name name4 = { .name = "lys" };
+	
+	list_insert_first(&name1.node, &list);
+	list_insert_first(&name2.node, &list);
+	list_insert_first(&name3.node, &list);
+	list_insert_first(&name4.node, &list);
+	
+	struct list_node* it;
+	
+	list_iterate(it, &list) {
+		struct name* name = list_get_entry(it, struct name, node);
+		print(name->name);
+		print(" ");
+	}
 	
 	// =====================================
 	// Test code for the graphics engine
