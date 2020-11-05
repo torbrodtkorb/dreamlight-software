@@ -45,7 +45,7 @@ void driver_init(void)
 	
 	// Enable console print
 	print_init();
-	
+		
 	// Enable the led strip
 	led_strip_init();
 }
@@ -65,7 +65,6 @@ int main(void)
 {
 	early_init();
 	driver_init();
-	print("hei");
 	
 	struct list_node list;
 	list_init(&list);
@@ -92,17 +91,10 @@ int main(void)
 	// Test code for the graphics engine
 	// =====================================
 	engine_init(&e);
+	
 	e.update(&e);
+	
 	while (1) {
-		
-		for (int i = 0; i  < LED_CNT; i++){
-			led_strip[i].global = 15;
-			led_strip[i].blue = 255;
-			led_strip[i].red = 30;
-			led_strip[i].green = 0;
-		}
-		
-		led_strip_update(led_strip, LED_CNT);
 		
 	
 	}
