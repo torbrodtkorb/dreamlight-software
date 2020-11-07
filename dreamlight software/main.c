@@ -11,6 +11,7 @@
 #include "led_driver.h"
 #include "engine.h"
 #include "list.h"
+#include "fpu.h"
 
 #define LED_CNT 50
 
@@ -30,6 +31,10 @@ void early_init(void)
 	
 	// Initialize the malloc
 	gmalloc_init();
+	
+	// Enable the FPU
+	//fpu_init();
+	
 }
 
 /// Initializes the drivers
@@ -54,38 +59,38 @@ struct pixel led_strip[LED_CNT];
 
 struct graphics_engine e;
 
+
+
+
+
+
 struct name {
-	char* name;
-	
-	struct list_node node;
+	char* a;
+	void (*p) (struct name* name);
 };
+
+void p (struct name* name)
+{
+	print(name->a);
+}
+
+void name_init(struct name* name)
+{
+	name->p = p;
+}
+
+
+
 
 /// Main entry point
 int main(void)
 {
 	early_init();
 	driver_init();
-	
-	struct list_node list;
-	list_init(&list);
-	
-	struct name name1 = { .name = "tor" };
-	struct name name2 = { .name = "elsker" };
-	struct name name3 = { .name = "mange" };
-	struct name name4 = { .name = "lys" };
-	
-	list_insert_first(&name1.node, &list);
-	list_insert_first(&name2.node, &list);
-	list_insert_first(&name3.node, &list);
-	list_insert_first(&name4.node, &list);
-	
-	struct list_node* it;
-	
-	list_iterate(it, &list) {
-		struct name* name = list_get_entry(it, struct name, node);
-		print(name->name);
-		print(" ");
-	}
+	print("trinse trinse\n");
+	struct name name1 = {.a = "trinse"};
+	name_init(&name1);
+	name1.p(&name1);	
 	
 	// =====================================
 	// Test code for the graphics engine
@@ -96,8 +101,6 @@ int main(void)
 	
 	while (1) {
 		
-	
+
 	}
 }
-
-
