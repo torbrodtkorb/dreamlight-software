@@ -20,4 +20,8 @@ void usart_init(Usart* usart, struct usart_desc* desc)
 	
 	/* Enable transmitter and receiver */
 	usart->US_CR = (1 << 4) | (1 << 6);
+	
+	/* Enable receive interrupt */
+	usart->US_IER = (1 << 0);
+	
 }

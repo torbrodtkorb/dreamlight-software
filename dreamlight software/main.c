@@ -11,7 +11,8 @@
 #include "led_driver.h"
 #include "engine.h"
 #include "list.h"
-#include "fpu.h"
+#include <core_cm7.h>
+//#include "fpu.h"
 
 #define LED_CNT 50
 
@@ -32,6 +33,7 @@ void early_init(void)
 	// Initialize the malloc
 	gmalloc_init();
 	
+	
 	// Enable the FPU
 	//fpu_init();
 	
@@ -50,17 +52,18 @@ void driver_init(void)
 	
 	// Enable console print
 	print_init();
+	
+	// Enable global inrerupt
+	asm volatile("cpsie i");
 		
 	// Enable the led strip
 	led_strip_init();
+	
 }
 
 struct pixel led_strip[LED_CNT];
 
 struct graphics_engine e;
-
-
-
 
 
 
@@ -87,20 +90,22 @@ int main(void)
 {
 	early_init();
 	driver_init();
-	print("trinse trinse\n");
-	struct name name1 = {.a = "trinse"};
-	name_init(&name1);
-	name1.p(&name1);	
+	print("heo");
+	NVIC_EnableIRQ(USART1_IRQn);
 	
 	// =====================================
 	// Test code for the graphics engine
 	// =====================================
-	engine_init(&e);
-	
-	e.update(&e);
-	
+
 	while (1) {
 		
 
 	}
+}
+
+
+void USART1_Handler(void)
+{
+	print("DU HAR FÅTT EN MELDING\n");
+	while (1);
 }
