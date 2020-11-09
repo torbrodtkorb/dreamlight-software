@@ -21,6 +21,12 @@ void print_init(void)
 	};
 	
 	usart_init(USART1, &print_desc);
+	
+	// Setup for time..
+	USART1->US_RTOR = 80;                   // Timeout = bit period * RTOR
+	USART1->US_IER = (1 << 8);              // Enables the timeout interrupt
+	USART1->US_CR = (1 << 11);              // Starts timeout after next character received
+	
 }
 
 static char print_buffer[256];

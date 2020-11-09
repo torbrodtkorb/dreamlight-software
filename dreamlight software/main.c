@@ -53,36 +53,13 @@ void driver_init(void)
 	// Enable console print
 	print_init();
 	
-	// Enable global inrerupt
+	// Enable global interrupt
 	asm volatile("cpsie i");
 		
 	// Enable the led strip
 	led_strip_init();
 	
 }
-
-struct pixel led_strip[LED_CNT];
-
-struct graphics_engine e;
-
-
-
-struct name {
-	char* a;
-	void (*p) (struct name* name);
-};
-
-void p (struct name* name)
-{
-	print(name->a);
-}
-
-void name_init(struct name* name)
-{
-	name->p = p;
-}
-
-
 
 
 /// Main entry point
@@ -106,6 +83,13 @@ int main(void)
 
 void USART1_Handler(void)
 {
-	print("DU HAR FÅTT EN MELDING\n");
-	while (1);
+	u32 status = USART1->US_CSR;
+	if (status & (1 << 0)) {
+		u8 rec = (USART1->US_RHR & 0xFF);
+		print("r\n");
+	}
+	if (status & (1 << 8)) {
+		USART1->US_CR = (1 << 11);
+		print("timeout\n");
+	}
 }
